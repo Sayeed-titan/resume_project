@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Resume</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f0f2f5;
+            padding: 30px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        textarea,
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Add New Resume</h2>
+
+        <!-- enctype="multipart/form-data" is REQUIRED whenever you have an image upload! -->
+        <form method="POST" enctype="multipart/form-data">
+
+            <!-- Django Security Token (Protects against hackers forging form submissions) -->
+            {% csrf_token %}
+
+            <!-- This magically prints out all 15 inputs based on our ModelForm! -->
+            {{ form.as_p }}
+
+            <button type="submit" class="btn-submit">Save Resume</button>
+            <a href="{% url 'resume_list' %}" class="btn-cancel">Cancel</a>
+        </form>
+    </div>
+
+</body>
+
+</html>
