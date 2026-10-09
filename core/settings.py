@@ -130,5 +130,5 @@ MAILERS = {
 }
 
 # Media files (user uploaded files like profile Picture)
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
