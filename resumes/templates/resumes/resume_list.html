@@ -81,7 +81,7 @@
     <div class="header">
         <h1>All Resumes</h1>
         <!-- We will connect this button to our Create view later -->
-        <a href="#" class="btn-create">+ Create New Resume</a>
+        <a href="{% url 'resume_create' %}" class="btn-create">+ Create New Resume</a>
     </div>
 
     <!-- Django Template Language: Loop through the 'resumes' we sent from views.py -->
