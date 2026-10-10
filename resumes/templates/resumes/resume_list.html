@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Resume Builder</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +13,7 @@
 
         .resume-card {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
@@ -27,41 +26,48 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #62a0e2;
+            border: 3px solid #007bff;
+        }
+
+        .btn-create {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
         }
     </style>
 </head>
 
-<tbody>
+<body>
 
     <h1>All Resumes</h1>
-    <hr>
+    <a href="{% url 'resume_create' %}" class="btn-create">+ Create New Resume</a>
+    <br><br>
 
     {% for resume in resumes %}
     <div class="resume-card">
 
         {% if resume.profile_picture %}
-        <img src="{{ resume.profile_picture.url }}" class="profile-pic" width="100" alt="Profile Picture">
+        <img src="{{ resume.profile_picture.url }}" class="profile-pic" alt="Profile Picture">
         {% else %}
-        <p>No Image Uploaded!</p>
+        <div class="profile-pic" style="background:#ddd; display:flex; align-items:center; justify-content:center;">No
+            Image</div>
         {% endif %}
 
         <div class="details">
-            <h2>{{resume.full_name}}</h2>
-            <p>Position:<strong>{{resume.position}} </strong> at {{resume.company_name}}</p>
-            <p>{{resume.summary}}</p>
-            <p>Email: {{resume.email}} | Phone: {{resume.phone}}</p>
-            <hr>
+            <h2 style="margin-top: 0;">{{ resume.full_name }}</h2>
+            <p><strong>{{ resume.position }}</strong> at {{ resume.company_name }}</p>
+            <p>{{ resume.summary }}</p>
+            <p>Email: {{ resume.email }} | Phone: {{ resume.phone }}</p>
         </div>
 
     </div>
 
     {% empty %}
-    <h3>No resumes found. Please create one!</h3>
-
+    <p>No resumes found. Go build one!</p>
     {% endfor %}
 
-
-</tbody>
+</body>
 
 </html>
